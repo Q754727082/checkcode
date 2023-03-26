@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: checkcode
+  cloud:
+    nacos:
+      server-addr: ip:8848
+      discovery:
+        namespace: ${spring.profiles.active}
+        group: xxx-project
+      config:
+        namespace: ${spring.profiles.active}
+        group: xxx-project
+        file-extension: yaml
+        refresh-enabled: true
+        shared-configs:
+          - data-id: swagger-${spring.profiles.active}.yaml
+            group: xxx-common
+            refresh: true
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: xxx-common
+            refresh: true
+
+  profiles:
+    active: dev
